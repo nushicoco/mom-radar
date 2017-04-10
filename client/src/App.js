@@ -10,22 +10,22 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-
-        fetch(`/users`, {
-            accept: 'application/json',
-        }).then(function (resp) {
-            window.coco = resp;
-            console.log("got some info", resp)
-            return resp;
-        }).then(this.parseJSON.bind(this))
-          .then(this.afterParseJson.bind(this));
+        this.state = {status:"ok", userName:"Coco"}
+        // fetch(`/users`, {
+        //     accept: 'application/json',
+        // }).then(function (resp) {
+        //     window.coco = resp;
+        //     console.log("got some info", resp)
+        //     return resp;
+        // }).then(this.parseJSON.bind(this))
+        //   .then(this.afterParseJson.bind(this));
     }
 
     render() {
         let store =  createStore(rootReducer);
         return (
             <div className="App">
-                <Profile store={store} />
+                <Profile store={store} userName={this.state.userName} />
             </div>);
     }
 
