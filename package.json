@@ -1,0 +1,24 @@
+{
+  "name": "untitled3",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "supervisor ./bin/www",
+    "client": "cd client && npm start"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "hbs": "~4.0.1",
+    "morgan": "~1.8.1",
+    "redux": "^3.6.0",
+    "reload": "^1.1.1",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "concurrently": "^3.4.0"
+  }
+}
