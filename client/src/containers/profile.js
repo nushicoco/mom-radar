@@ -11,7 +11,7 @@ class Profile extends Component
 
         return (
             <div>
-                <h1>{this.props.userName}</h1>
+                <h1>cococo</h1>
             </div>)
     }
 }

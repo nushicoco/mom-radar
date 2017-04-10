@@ -36,7 +36,7 @@ class App extends Component {
     afterParseJson(info) {
 
         console.log("info:", info);
-        this.setState ={userName:info.userName}
+        this.setState({userName:info.userName})
     }
 }
 export default App;
