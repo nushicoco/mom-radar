@@ -1,42 +1,25 @@
 import React, { Component } from 'react';
-import { createStore } from 'redux'
-import rootReducer from './reducers/index'
 
 import './App.css';
 
 import Profile from './containers/profile';
+import NavigationBar from "./containers/navigation_bar";
+
 
 class App extends Component {
 
     constructor(props) {
         super(props);
         this.state = {status:"ok", userName:"Coco"}
-        // fetch(`/users`, {
-        //     accept: 'application/json',
-        // }).then(function (resp) {
-        //     window.coco = resp;
-        //     console.log("got some info", resp)
-        //     return resp;
-        // }).then(this.parseJSON.bind(this))
-        //   .then(this.afterParseJson.bind(this));
+
     }
 
     render() {
-        let store =  createStore(rootReducer);
         return (
-            <div className="App">
-                <Profile store={store} userName={this.state.userName} />
+            <div>
+                <NavigationBar/>
+                <Profile userName={this.state.userName} />
             </div>);
-    }
-
-    parseJSON(response) {
-        return response.json();
-    }
-
-    afterParseJson(info) {
-
-        console.log("info:", info);
-        this.setState({userName:info.userName})
     }
 }
 export default App;

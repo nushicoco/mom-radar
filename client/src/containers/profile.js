@@ -3,12 +3,19 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators} from 'redux';
+import { fetchProfile } from '../actions/index'
 
 class Profile extends Component
 {
-    constructor() {
-        super();
-        this.state = {userName:"coco2"};
+    constructor(props) {
+        super(props);
+        this.state = {
+            userName:props.userName,
+            profile:{}
+        };
+        this.props.fetchProfile("einav@gmail.com")
+
     }
     update (e) {
         this.setState({
@@ -16,13 +23,37 @@ class Profile extends Component
         });
     }
 
+    componentWillMount(){
+        // console.log("componentWillMount")
+        // fetch(`/users`, {
+        //     accept: 'application/json'
+        // }).then(response => response.json())
+        //     .then(({results:userName}) => {});
+    }
+
+    componentWillUnMount(){
+        // This is the destructor
+        console.log("componentWillUnMount")
+
+    }
+
+    componentDidMount(){
+        console.log("componentDidMount")
+    }
+
+    componentWillReceiveProps(nexProps){}
+    // shouldComponentUpdate(nextProps,nextState){}
+    componentDidUpdate(prevProps,prevState){}
+
     render () {
-        // console.log ("props.userName",this.props);
+        console.log ("render");
+
+        let userName = this.state.userName;
 
         return (
             <div>
-                <h1>Name is {this.state.userName}</h1>
-                <MySecondInput ref={ component => this.userName = component} update={this.update.bind(this)}/>
+                <h1>Name is {this.props.profile.userName} </h1>
+                <MySecondInput val={this.state.profile.userName} ref={ component => this.userName = component} update={this.update.bind(this)}/>
                 <Button>Save</Button>
             </div>)
     }
@@ -30,7 +61,7 @@ class Profile extends Component
 
 class MySecondInput extends Component {
     render(){
-        return (<input ref="input" onChange={this.props.update}/>)
+        return (<input ref="input" value={this.props.val} onChange={this.props.update}/>)
     }
 }
 
@@ -64,4 +95,12 @@ Profile.defualtProps = {
 
 // export default connect(mapStateToProps)(Profile);
 
-export default Profile
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({fetchProfile}, dispatch);
+}
+
+function mapStateToProps({profile}){
+    return {profile}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

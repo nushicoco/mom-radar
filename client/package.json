@@ -4,8 +4,12 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "axios": "^0.16.1",
     "react": "^15.5.3",
-    "react-dom": "^15.5.3"
+    "react-dom": "^15.5.3",
+    "react-router": "^4.1.0",
+    "react-router-dom": "^4.1.0",
+    "redux-promise": "^0.5.3"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
