@@ -78,19 +78,6 @@ class NavigationBar extends Component
     }
 }
 
-class MySecondInput extends Component {
-    render(){
-        return (<input ref="input" value={this.props.val} onChange={this.props.update}/>)
-    }
-}
-
-const MyInput = (props) =>
-    <input onChange={props.update}/>
-
-const Button = (props) =>
-    <button onChange={props.update}>{props.children}</button>
-
-
 // function mapStateToProps(state) {
 //     return {
 //         userName: state.userName

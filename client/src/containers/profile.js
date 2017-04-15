@@ -48,14 +48,18 @@ class Profile extends Component
     render () {
         console.log ("render");
 
-        let userName = this.state.userName;
+        if (this.props.profile.results){
+            var user = this.props.profile.results[0]
+            return (
+                <div>
+                    <h1>Name is {user.name.first} </h1>
+                    <MySecondInput val={this.state.profile.userName} ref={ component => this.userName = component} update={this.update.bind(this)}/>
+                    <Button>Save</Button>
+                </div>)
+        } else {
+            return <div>Loading..</div>
+        }
 
-        return (
-            <div>
-                <h1>Name is {this.props.profile.userName} </h1>
-                <MySecondInput val={this.state.profile.userName} ref={ component => this.userName = component} update={this.update.bind(this)}/>
-                <Button>Save</Button>
-            </div>)
     }
 }
 
@@ -64,9 +68,6 @@ class MySecondInput extends Component {
         return (<input ref="input" value={this.props.val} onChange={this.props.update}/>)
     }
 }
-
-const MyInput = (props) =>
-    <input onChange={props.update}/>
 
 const Button = (props) =>
     <button onChange={props.update}>{props.children}</button>
@@ -82,11 +83,11 @@ Profile.propTypes = {
     userName:React.PropTypes.string,
 
     // Custom validations your component requires
-    email(props, propName, component){
-        if (!(propName in props)){
-            return new Error(`missing ${propName}`)
-        }
-    }
+    // email(props, propName, component){
+    //     if (!(propName in props)){
+    //         return new Error(`missing ${propName}`)
+    //     }
+    // }
 }
 
 Profile.defualtProps = {

@@ -10,12 +10,14 @@ export function changeUserName(userName = "Mighty1617") {
     };
 }
 
-export const URL = '/users'
+// export const URL = '/users'
+const PROFILE_URL = 'https://randomuser.me/api/'
 export const FETCH_PROFILE = 'FETCH_PROFILE'
 export function fetchProfile(profileEmail) {
-    const request = axios.get(`${URL}?email=${profileEmail}`)
+    const request = axios.get(`${PROFILE_URL}?email=${profileEmail}`)
     return {
         type:FETCH_PROFILE,
         payload: request
     };
 }
+
