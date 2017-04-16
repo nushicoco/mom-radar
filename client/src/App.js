@@ -19,7 +19,7 @@ class App extends Component {
         return (
             <div>
                 <NavigationBar/>
-                <Profile userName={this.state.userName} />
+                {/*<Profile userName={this.state.userName} />*/}
                 <Interested/>
             </div>);
     }
