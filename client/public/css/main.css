@@ -8,6 +8,7 @@ h1 {
         height: 350px;
         width: 350px;
         margin: 0 auto;
+        /*border: #caf01f 3px solid;*/
     }
 
     .interested-actions {
@@ -50,6 +51,19 @@ h1 {
 
     .navbar-inverse .navbar-nav>li>a {
         color: white;
+    }
+
+    .btn {
+        color: white;
+    }
+    .btn1 {
+        background-color: #1fa3f0;
+    }
+    .btn2 {
+        background-color: #f0d11f;
+    }
+    .btn3 {
+        background-color: #f01f61;
     }
 
 }

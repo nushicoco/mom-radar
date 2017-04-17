@@ -4,7 +4,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
+
 import { fetchProfile } from '../actions/index'
+
+import ControlledCarousel from './controlled_carousel';
 
 
 class Interested extends Component{
@@ -35,6 +38,12 @@ class Interested extends Component{
         if (this.props.profile && this.props.profile.results){
             var user = this.props.profile.results[0];
             console.log(`user=${user}`);
+            let items = [
+                {src:user.picture.large, text:"here", label:"Label", key:1},
+                {src:"https://unsplash.it/350", text:"random1 here", label:"random Label1",key:2},
+                {src:"https://unsplash.it/365", text:"random2 here", label:"random Label2",key:3}
+            ];
+
             return (
                 <div>
                     <div className="interested-actions">
@@ -47,9 +56,20 @@ class Interested extends Component{
                             <i className="fa fa-heart fa-stack-1x love small-heart" aria-hidden="true"></i>
                         </span>
                     </div>
-                    <div className="interested-profile-image" style={{backgroundImage:"url('" + user.picture.large + "')"}} />
+                    {/*<div className="interested-profile-image" style={{backgroundImage:"url('" + user.picture.large + "')"}} />*/}
                     {/*<img src="https://unsplash.it/350" />*/}
+                    <ControlledCarousel items={items}></ControlledCarousel>
                     <h1> {user.name.first}, {this.calcAge.call(this, user.bod)}</h1>
+                    <div>
+                        <button className="btn btn1">
+                            coco
+                        </button>
+                        <button className="btn btn2">
+                            loco
+                        </button>
+                        <button className="btn btn3">
+                            choco
+                        </button></div>
                 </div>)
         } else {
             return <div>Loading..</div>
