@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import ReduxPromise from 'redux-promise'
-// import { Router } from 'react-router'
-// import { BrowserRouter, Match, Route, Link } from 'react-router'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, IndexRoute} from 'react-router-dom'
 
-import { createBrowserHistory } from 'history'
+import { createBrowserHistory } from 'history';
 
-import reducers from './reducers'
-import { routes } from './routes'
+import reducers from './reducers';
+import { routes } from './routes';
 import './index.css';
+
+import App from './App';
+import Intrested from './components/interested';
 
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
@@ -22,8 +23,9 @@ ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
         <Router history={history}>
             <div>
+            <App/>
                 {routes.map((route,index) => (
-                    <Route key={index} pattern={route.pattern} component={route.component} exactly={route.exactly} />
+                    <Route key={index} path={route.path} component={route.component} exact={route.exact} />
                 ))}
             </div>
         </Router>

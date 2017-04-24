@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
 import './App.css';
+import Home from './components/interested'
 
-import Profile from './containers/profile';
 import NavigationBar from "./containers/navigation_bar";
-import Interested from "./components/interested";
 
 
 class App extends Component {
@@ -20,7 +19,6 @@ class App extends Component {
             <div>
                 <NavigationBar/>
                 {/*<Profile userName={this.state.userName} />*/}
-                <Interested/>
             </div>);
     }
 }

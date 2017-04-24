@@ -1,12 +1,20 @@
 /**
  * Created by einavcarmon on 12/04/2017.
  */
-import App from './App';
+import Profile from './containers/profile_page';
+import Interested from "./components/interested";
+
+
 export const routes = [
+
     {
-        'pattern':'/',
-        'component': App,
-        'exactly': true
+        'path':'/',
+        'component': Interested,
+        'exact' : true
+    },
+    {
+        'path':'/profile',
+        'component': Profile
     },
     // {
     //     'pattern':'/coco',
